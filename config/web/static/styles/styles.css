@@ -2,7 +2,7 @@
     background-image: url(../img/banner.jpg);
     background-position: bottom center;
     background-size: cover;
-    padding: 7% 4% 1% 4%;
+    padding: 8% 4% 2% 4%;
     position: relative;
     background-attachment: fixed;
     z-index: 1;
@@ -21,11 +21,20 @@
 }
 
 .menu {
-    background-color: rgba(0, 0, 0, 0.671);
+    background-color: rgb(4, 87, 1);
     z-index: 2;
 }
 
 .logo{
     padding: 5%;
+}
+
+.zoom{
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.zoom:hover{
+    transform: scale(1.1);
 }
 
