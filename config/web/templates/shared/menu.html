@@ -9,20 +9,13 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'platos' %}">Registro de platos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'personal' %}">Registro de Personal</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown link
+              Registrar
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="{% url 'platos' %}">Platos</a></li>
+              <li><a class="dropdown-item" href="{% url 'personal' %}">Personal</a></li>
             </ul>
           </li>
         </ul>

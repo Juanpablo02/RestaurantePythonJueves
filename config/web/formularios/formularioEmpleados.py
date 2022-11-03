@@ -7,8 +7,10 @@ class FormularioEmpleados (forms.Form):
     # Creando atributo para cargar el selector
     
     Options = (
-        (1,'Mujer'),
-        (2,'Hombre')
+        (1,'Cocinero'),
+        (2,'Auxiliar'),
+        (3,'Mesero'),
+        (4,'Administrador')
     )
 
     # Dentro de la clase cada atributo será un input
@@ -16,27 +18,35 @@ class FormularioEmpleados (forms.Form):
     nombreEmpleado = forms.CharField(
         widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
         required = True,
-        max_length = 50
+        max_length = 50,
+        label = "Nombres del empleado"
     )
-    identificacionEmpleado = forms.CharField(
-        widget = forms.NumberInput(attrs={'class': 'form-control mb-3'}),
-        required = False,
+    apellidoEmpleado = forms.CharField(
+        widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
+        required = True,
+        max_length = 50,
+        label = "Apellidos del empleado"
     )
     fotoEmpleado = forms.CharField(
         widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
-        required = True
+        required = True,
+        label = "Foto del empleado"
+    )
+    cargoEmpleado = forms.ChoiceField(
+        widget = forms.Select(attrs = {'class':'form-control mb-3'}),
+        required = True,
+        choices = Options,
+        label = "Cargo del empleado"
+    )
+    salarioEmpleado = forms.CharField(
+        widget = forms.NumberInput(attrs={'class': 'form-control mb-3'}),
+        required = True,
+        label = "Salario del empleado"
     )
     telefonoEmpleado = forms.CharField(
         widget = forms.NumberInput(attrs={'class': 'form-control mb-3'}),
         required = True,
+        label = "Número de contacto"
     )
-    emailEmpleado = forms.CharField(
-        widget = forms.EmailInput(attrs={'class': 'form-control mb-3'}),
-        required = True
-    )
-    generoEmpleado = forms.ChoiceField(
-        widget = forms.Select(attrs = {'class':'form-control mb-3'}),
-        required = True,
-        choices = Options
-    )
+    
     

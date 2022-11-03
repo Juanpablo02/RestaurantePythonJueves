@@ -10,7 +10,9 @@ class FormularioPlatos (forms.Form):
     Options = (
         (1,'Entrada'),
         (2,'Plato fuerte'),
-        (3,'Postre')
+        (3,'Postre'),
+        (4,'Coctel'),
+        (5,'Bebida gaseosa')
     )
 
     # Dentro de la clase cada atributo será un input
@@ -18,24 +20,29 @@ class FormularioPlatos (forms.Form):
     nombrePlato = forms.CharField(
         widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
         required = True,
-        max_length = 5
+        max_length = 30,
+        label="Nombre del plato"
     )
     descripcionPlatos = forms.CharField(
         widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
         required = False,
-        max_length = 5
+        max_length = 20,
+        label="Descripción"
     )
     fotoPlato = forms.CharField(
         widget = forms.TextInput(attrs={'class': 'form-control mb-3'}),
-        required = True
+        required = True,
+        label="Foto del plato"
     )
     precioPlato = forms.CharField(
         widget = forms.NumberInput(attrs={'class': 'form-control mb-3'}),
-        required = True 
+        required = True,
+        label="Precio del plato" 
     )
     tipoPlato = forms.ChoiceField(
         widget = forms.Select(attrs = {'class':'form-control mb-3'}),
         required = True,
-        choices = Options
+        choices = Options,
+        label="Tipo de plato"
     )
     

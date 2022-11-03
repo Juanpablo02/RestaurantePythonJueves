@@ -17,6 +17,18 @@ def Plates(request):
     datosParaTemplate = {
         'formularioRegistro':formulario
     }
+    
+    # Preguntamos si existe alguna petición de tipo POST asociada a la vista
+    if request.method == 'POST':
+        # Deberiamos capturar los datos del formulario
+        datosFormulario = FormularioPlatos(request.POST)
+        # Verificar si los datos llegaron correctamente (Validaciones OK)
+        if datosFormulario.is_valid():
+            # Capturamos la data
+            datosPlatos = datosFormulario.cleaned_data
+            print(datosFormulario)
+            print(datosPlatos)
+        
     return render(request,'platos.html',datosParaTemplate)
 
 def Staff(request):
