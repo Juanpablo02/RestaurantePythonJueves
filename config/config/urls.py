@@ -16,12 +16,12 @@ Including another URLconf
 from turtle import home
 from django.contrib import admin
 from django.urls import path
-from web.views import Home,Plates,Staff
+from web.views import Home,ViewPlates,ViewStaff
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Home, name="home"),
-    path('platos/', Plates, name="platos"),
-    path('personal/', Staff, name="personal")
+    path('platos/', ViewPlates, name="platos"),
+    path('personal/', ViewStaff, name="personal")
 ]
