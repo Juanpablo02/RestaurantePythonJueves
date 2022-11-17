@@ -1,10 +1,13 @@
 from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 
 # Importar el formulario a renderizar
 
 from web.formularios.formularioPlatos import FormularioPlatos
 from web.formularios.formularioEmpleados import FormularioEmpleados
 from web.models import Platos,Empleado
+from web.formularios.formularioEdicionPlatos import FormularioEdicionPlatos
+
 
 # Create your views here.
 # Aqui van los controladores
@@ -12,6 +15,48 @@ from web.models import Platos,Empleado
 
 def Home(request):
     return render(request,'index.html')
+
+def MenuPlates(request):
+    
+    platosConsultados = Platos.objects.all()
+    
+    formulario = FormularioEdicionPlatos()
+    
+    diccionarioEnvio = {
+        'platos':platosConsultados,
+        'edicion':formulario
+    }
+    
+    return render(request,'menuPlatos.html', diccionarioEnvio)
+
+def UpdatePlate(request,id):
+    datosParaTemplate = {
+        'bandera':False
+    }
+    #Recibir los datos del formulario y editar mi plato
+    if request.method == 'POST':
+        datosFormulario = FormularioEdicionPlatos(request.POST)
+        if datosFormulario.is_valid():
+            datosEditarPlato = datosFormulario.cleaned_data
+            try:
+                Platos.objects.filter(pk=id).update(precio_plato=datosEditarPlato["precioEditar"])
+                datosParaTemplate['bandera']=True
+                print("Exito guardando los datos")
+            except Exception as error:
+                datosParaTemplate['bandera']=False
+                print(f'Error {error}')
+            
+    return redirect('menuPlatos')
+            
+
+def MenuStaff(request):
+    
+    empleadosConsultados = Empleado.objects.all()
+    diccionarioEnvio = {
+        'empleados':empleadosConsultados
+    }
+    
+    return render(request, 'menuEmpleados.html', diccionarioEnvio)
 
 def ViewPlates(request):
     formulario = FormularioPlatos()
