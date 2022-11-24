@@ -30,20 +30,17 @@ def MenuPlates(request):
     return render(request,'menuPlatos.html', diccionarioEnvio)
 
 def UpdatePlate(request,id):
-    datosParaTemplate = {
-        'bandera':False
-    }
+    print(id)
     #Recibir los datos del formulario y editar mi plato
     if request.method == 'POST':
         datosFormulario = FormularioEdicionPlatos(request.POST)
         if datosFormulario.is_valid():
             datosEditarPlato = datosFormulario.cleaned_data
+            print("hola")
             try:
-                Platos.objects.filter(pk=id).update(precio_plato=datosEditarPlato["precioEditar"])
-                datosParaTemplate['bandera']=True
+                Platos.objects.filter(pk=id).update(precio_plato=datosEditarPlato["precioPlato"])
                 print("Exito guardando los datos")
             except Exception as error:
-                datosParaTemplate['bandera']=False
                 print(f'Error {error}')
             
     return redirect('menuPlatos')

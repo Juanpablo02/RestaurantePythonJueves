@@ -52,15 +52,23 @@
         </script>
         {% endif %}
         <div class="container mainplatos">
+            <hr class="line">
             <h1 class="text-center titleplatos">Platos de Entrada</h1>
+            <hr class="line">
             <div class="row row-cols-1 row-cols-md-3 g-3">
                 {% for plato in platos %}
                     {% if plato.tipo_plato == 2 %}
                     <div class="col">
                         <div class="card h-100 shadow">
                             <img src="{{ plato.foto_plato }}" alt="" class="img-fluid w-100">
-                            <h4>{{ plato.nombre_plato }}</h4>
-                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#plato{{ plato.id_plato }}">
+                            <div class="col-12">
+                                <div class="row mx-3 mt-3">
+                                    <h4 class="">{{ plato.nombre_plato }}</h4>
+                                    <h6 class="">Precio del plato: {{ plato.precio_plato }}</h6>
+                                    <p>{{ plato.descri_plato }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary align-items-center mx-3 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#plato{{ plato.id_plato }}">
                                 <i class="bi bi-pen"></i>
                             </button>
                             <div class="collapse" id="plato{{ plato.id_plato }}">
@@ -68,38 +76,76 @@
                                     <form action="{% url 'editarPlato' id=plato.id_plato %}" method="POST">
                                         {{edicion}}
                                         {%csrf_token%}
-                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                        <button type="submit" class="btn" style="background-color: #00D213;">Editar</button>
                                     </form>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     {% endif %}
                 {% endfor %}
             </div>
             <hr class="line">
-            <h1 class="text-center my-5">Platos Fuertes</h1>
+            <h1 class="text-center my-3">Platos Fuertes</h1>
+            <hr class="line">
             <div class="row row-cols-1 row-cols-md-3 g-3">
                 {% for plato in platos %}
                     {% if plato.tipo_plato == 1 %}
                     <div class="col">
                         <div class="card h-100 shadow">
                             <img src="{{ plato.foto_plato }}" alt="" class="img-fluid w-100">
-                            <h4>{{ plato.nombre_plato }}</h4>
+                            <div class="col-12">
+                                <div class="row mx-3 mt-3">
+                                    <h4 class="">{{ plato.nombre_plato }}</h4>
+                                    <h6 class="">Precio del plato: {{ plato.precio_plato }}</h6>
+                                    <p>{{ plato.descri_plato }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary align-items-center mx-3 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#plato{{ plato.id_plato }}">
+                                <i class="bi bi-pen"></i>
+                            </button>
+                            <div class="collapse" id="plato{{ plato.id_plato }}">
+                                <div class="card card-body">
+                                    <form action="{% url 'editarPlato' id=plato.id_plato %}" method="POST">
+                                        {{edicion}}
+                                        {%csrf_token%}
+                                        <button type="submit" class="btn" style="background-color: #00D213;"">Editar</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {% endif %}
                 {% endfor %}
             </div>
-            <hr>
-            <h1 class="text-center my-4">Postres</h1>
+            <hr class="line">
+            <h1 class="text-center my-3">Postres</h1>
+            <hr class="line">
             <div class="row row-cols-1 row-cols-md-3 g-3">
                 {% for plato in platos %}
                     {% if plato.tipo_plato == 3 %}
                     <div class="col">
                         <div class="card h-100 shadow">
                             <img src="{{ plato.foto_plato }}" alt="" class="img-fluid w-100">
-                            <h4>{{ plato.nombre_plato }}</h4>
+                            <div class="col-12">
+                                <div class="row mx-3 mt-3">
+                                    <h4 class="">{{ plato.nombre_plato }}</h4>
+                                    <h6 class="">Precio del plato: {{ plato.precio_plato }}</h6>
+                                    <p>{{ plato.descri_plato }}</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary align-items-center mx-3 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#plato{{ plato.id_plato }}">
+                                <i class="bi bi-pen"></i>
+                            </button>
+                            <div class="collapse" id="plato{{ plato.id_plato }}">
+                                <div class="card card-body">
+                                    <form action="{% url 'editarPlato' id=plato.id_plato %}" method="POST">
+                                        {{edicion}}
+                                        {%csrf_token%}
+                                        <button type="submit" class="btn" style="background-color: #00D213;">Editar</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {% endif %}

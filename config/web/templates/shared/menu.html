@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg menu fixed-top navbar-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #494949;">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'home' %}"><img src="../../static/img/elherbario_logo.svg" width="90px" height="30px" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,12 +13,20 @@
             <a class="nav-link dropdown-toggle  text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Registrar
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu"style="background-color: #494949;">
               <li><a class="dropdown-item  text-white" href="{% url 'platos' %}">Platos</a></li>
               <li><a class="dropdown-item  text-white" href="{% url 'personal' %}">Personal</a></li>
             </ul>
           </li>
-          <li><a class="nav-link text-white" href="{% url 'menuEmpleados' %}">Ver Personal</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Ver
+            </a>
+            <ul class="dropdown-menu" style="background-color: #494949;">
+              <li><a class="dropdown-item text-white" href="{% url 'menuEmpleados' %}">Personal</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'menuPlatos' %}">Menú</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
